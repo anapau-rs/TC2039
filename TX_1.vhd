@@ -1,10 +1,6 @@
--- Raquel Alejandra Ramírez Valencia
--------------------------------------------------------------------------------------------------
---                                          TX UART                                            --
---   Este código es para el transmisor UART de start bit, 8 bits, stop bit, sin bit de paridad --
--------------------------------------------------------------------------------------------------
+--TX UART
 
--- Se declaran las librerías necesarias
+-- Se declaran las librerÃ­as necesarias
 
 library IEEE;
 use ieee.std_logic_1164.all; use ieee.numeric_std.all;
@@ -35,15 +31,15 @@ BEGIN
 		process (CLK, RST)
 		begin
 
-		 if RST = '1' then                     -- reset asincrónico
+		 if RST = '1' then                     -- reset asincrÃ³nico
 		   	current_state <= IDLE;
 		 elsif rising_edge(CLK) then
-			current_state <= next_state;   -- Se asigna next a current en transición positiva de reloj
+			current_state <= next_state;   -- Se asigna next a current en transiciÃ³n positiva de reloj
 		 end if;
 
 		end process;
 		-------------------------------------------------------------------------------------------------
-		process (CLK, current_state, RST, startB, CLK_counter, bit_index)                   -- lógica combinacional
+		process (CLK, current_state, RST, startB, CLK_counter, bit_index)                   -- lÃ³gica combinacional
 		begin
 			next_state <= current_state;                  				-- el estado siguiente toma el valor del estado actual
 			flag_completo <= '0';
@@ -51,7 +47,7 @@ BEGIN
 			case current_state is
 
 				---
-				-- IDLE: Se queda ahí sin recibir, hasta que RX va de high a low va a Start
+				-- IDLE: Se queda ahÃ­ sin recibir, hasta que RX va de high a low va a Start
 				when IDLE =>
 					flag_completo <= '0';
 					TX_serial <= '1';
